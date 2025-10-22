@@ -1,54 +1,98 @@
-[gd_scene format=3 uid="uid://bgb4w37b4o8cg"]
+[gd_scene load_steps=3 format=3 uid="uid://bgb4w37b4o8cg"]
+
+[ext_resource type="Script" uid="uid://c6bq28oo06h54" path="res://main_light_slides.gd" id="1_bi05a"]
+[ext_resource type="Texture2D" uid="uid://b8iubhxbq5gw1" path="res://icon.png" id="2_w5aql"]
 
 [node name="MVP" type="Node2D"]
 
 [node name="Main Light Slides" type="Node2D" parent="."]
-position = Vector2(482, 481)
+position = Vector2(478, 585)
+script = ExtResource("1_bi05a")
 
-[node name="Hue" type="HSlider" parent="Main Light Slides"]
+[node name="Sliders" type="Control" parent="Main Light Slides"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Hue" type="HSlider" parent="Main Light Slides/Sliders"]
+layout_mode = 0
 offset_right = 165.0
 offset_bottom = 51.0
 
-[node name="Brightness" type="VSlider" parent="Main Light Slides"]
+[node name="Brightness" type="VSlider" parent="Main Light Slides/Sliders"]
+layout_mode = 0
 offset_left = -70.0
 offset_top = -128.0
 offset_right = 24.0
 offset_bottom = 49.0
 
-[node name="Position" type="HSlider" parent="Main Light Slides"]
+[node name="Position" type="HSlider" parent="Main Light Slides/Sliders"]
+layout_mode = 0
 offset_left = -1.0
 offset_top = -40.0
 offset_right = 165.0
 offset_bottom = -24.0
+min_value = -500.0
+max_value = 360.0
 
-[node name="Labels" type="Node2D" parent="."]
+[node name="Dilation" type="HSlider" parent="Main Light Slides/Sliders"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -80.0
+offset_right = 164.0
+offset_bottom = -64.0
 
-[node name="Main Light" type="Node2D" parent="Labels"]
+[node name="Rotation" type="HSlider" parent="Main Light Slides/Sliders"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -127.0
+offset_right = 162.0
+offset_bottom = -111.0
+min_value = -360.0
+max_value = 360.0
 
-[node name="Brightness" type="Label" parent="Labels/Main Light"]
+[node name="Labels" type="Node2D" parent="Main Light Slides"]
+position = Vector2(-482, -585)
+
+[node name="Brightness" type="Label" parent="Main Light Slides/Labels"]
 offset_left = 416.0
-offset_top = 324.0
+offset_top = 428.0
 offset_right = 499.0
-offset_bottom = 347.0
+offset_bottom = 451.0
 text = "Brightness"
 
-[node name="Hue" type="Label" parent="Labels/Main Light"]
+[node name="Rotation" type="Label" parent="Main Light Slides/Labels"]
+offset_left = 493.0
+offset_top = 473.0
+offset_right = 576.0
+offset_bottom = 496.0
+text = "Rotation"
+
+[node name="Hue" type="Label" parent="Main Light Slides/Labels"]
 offset_left = 501.0
-offset_top = 507.0
+offset_top = 611.0
 offset_right = 538.0
-offset_bottom = 530.0
+offset_bottom = 634.0
 text = "Hue"
 
-[node name="Label" type="Label" parent="Labels/Main Light"]
+[node name="Position" type="Label" parent="Main Light Slides/Labels"]
 offset_left = 498.0
-offset_top = 455.0
+offset_top = 559.0
 offset_right = 561.0
-offset_bottom = 478.0
+offset_bottom = 582.0
 text = "Position"
 
-[node name="HSlider2" type="HSlider" parent="."]
-offset_right = 8.0
-offset_bottom = 16.0
+[node name="Dilation" type="Label" parent="Main Light Slides/Labels"]
+offset_left = 498.0
+offset_top = 516.0
+offset_right = 561.0
+offset_bottom = 539.0
+text = "Dilation"
+
+[node name="Stagelight" type="Sprite2D" parent="Main Light Slides"]
+position = Vector2(92, -530)
+texture = ExtResource("2_w5aql")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(573, 328)

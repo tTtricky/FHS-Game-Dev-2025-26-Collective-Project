@@ -1,5 +1,8 @@
+Sprite2D
+Node2D
+Node
+Control
 Camera2D
 Label
 HSlider
-Node2D
 VSlider
