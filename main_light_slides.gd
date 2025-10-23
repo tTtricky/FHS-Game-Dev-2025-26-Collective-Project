@@ -5,6 +5,7 @@ func _process(delta: float) -> void:
 	$Stagelight.rotation = $Sliders/Rotation.value / 150
 	$Stagelight.position.x = $Sliders/Position.value
 	$Stagelight/Light.scale.x = $Sliders/Dilation.value
+	$Stagelight/Light/PointLight2D.energy = $Sliders/Brightness.value
 	if Input.is_action_pressed("Left"):
 		$Sliders/Position.value -= 2
 	if Input.is_action_pressed("Right"):
