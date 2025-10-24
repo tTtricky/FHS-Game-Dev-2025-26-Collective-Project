@@ -4,7 +4,7 @@ class_name light
 func _process(delta: float) -> void:
 	$Stagelight.rotation = $Sliders/Rotation.value / 150
 	$Stagelight.position.x = $Sliders/Position.value
-	$Stagelight/Light.scale.x = $Sliders/Dilation.value / 2
+	$Stagelight/Light.scale.x = $Sliders/Dilation.value / 8
 	$Stagelight/Light/PointLight2D.energy = $Sliders/Brightness.value
 	if $Sliders/Hue.value != 1:
 		$Stagelight/Light/PointLight2D.set_color(Color.from_hsv($Sliders/Hue.value,1,1))

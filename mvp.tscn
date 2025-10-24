@@ -1,11 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgb4w37b4o8cg"]
+[gd_scene load_steps=8 format=3 uid="uid://bgb4w37b4o8cg"]
 
 [ext_resource type="Script" uid="uid://c6bq28oo06h54" path="res://main_light_slides.gd" id="1_bi05a"]
 [ext_resource type="Texture2D" uid="uid://b8iubhxbq5gw1" path="res://icon.png" id="2_w5aql"]
 [ext_resource type="Texture2D" uid="uid://bt0rp2qmadl3a" path="res://5bbc1a9931068-b6594086cf2a19b19b4fcd58283e039b.png" id="3_w5aql"]
+[ext_resource type="Script" uid="uid://dj1l0vok8jtj0" path="res://back_lights.gd" id="4_1l0ms"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_w5aql"]
 polygon = PackedVector2Array(419, 77, 407, 341, 753, 349, 732, 73, 808, 77, 808, 362, 803, 407, 340, 391, 331, 61)
+
+[sub_resource type="Gradient" id="Gradient_w5aql"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1l0ms"]
+gradient = SubResource("Gradient_w5aql")
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5232558, 0.6686047)
 
 [node name="MVP" type="Node2D"]
 
@@ -24,7 +32,7 @@ layout_mode = 0
 offset_right = 165.0
 offset_bottom = 51.0
 max_value = 1.0
-step = 0.01
+step = 0.0
 value = 1.0
 
 [node name="Brightness" type="VSlider" parent="Main Light Slides/Sliders"]
@@ -34,7 +42,7 @@ offset_top = -128.0
 offset_right = 24.0
 offset_bottom = 49.0
 min_value = 0.3
-max_value = 2.0
+max_value = 5.0
 step = 0.1
 value = 1.0
 
@@ -53,7 +61,7 @@ offset_left = -2.0
 offset_top = -80.0
 offset_right = 164.0
 offset_bottom = -64.0
-max_value = 4.0
+max_value = 8.0
 step = 0.0
 value = 1.0
 
@@ -121,6 +129,7 @@ scale = Vector2(0.24830508, 0.36223537)
 texture = ExtResource("3_w5aql")
 
 [node name="PointLight2D" type="PointLight2D" parent="Main Light Slides/Stagelight/Light"]
+light_mask = 2
 color = Color(18.892157, 18.892157, 18.892157, 1)
 energy = 8.87
 texture = ExtResource("3_w5aql")
@@ -131,18 +140,69 @@ energy = 8.87
 texture = ExtResource("3_w5aql")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Main Light Slides/Stagelight/Light"]
+visible = false
+light_mask = 2
 position = Vector2(-573, -55)
 occluder = SubResource("OccluderPolygon2D_w5aql")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(573, 328)
-zoom = Vector2(1, 0.75)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 light_mask = 2
 color = Color(0, 0, 0, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+light_mask = 2
 position = Vector2(556, 704)
 rotation = 3.1415927
 shadow_enabled = true
+
+[node name="Back Lights" type="Node2D" parent="."]
+script = ExtResource("4_1l0ms")
+
+[node name="PointLight2D" type="PointLight2D" parent="Back Lights"]
+position = Vector2(568, 209.5)
+scale = Vector2(18.09375, 6.4843745)
+energy = 2.5
+texture = SubResource("GradientTexture2D_1l0ms")
+
+[node name="Sprite2D" type="Sprite2D" parent="Back Lights"]
+position = Vector2(576, 205.99998)
+scale = Vector2(17.9375, 6.2812495)
+texture = ExtResource("2_w5aql")
+
+[node name="Brightness" type="VSlider" parent="Back Lights"]
+offset_left = 6.0
+offset_top = 478.0
+offset_right = 22.0
+offset_bottom = 636.0
+max_value = 5.0
+step = 0.0
+value = 1.0
+
+[node name="Label" type="Label" parent="Back Lights/Brightness"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 3.0
+offset_right = 198.0
+offset_bottom = 32.0
+rotation = 1.5707964
+text = "Ambient Brightness"
+
+[node name="Hue" type="VSlider" parent="Back Lights"]
+offset_left = 1120.0
+offset_top = 490.0
+offset_right = 1136.0
+offset_bottom = 632.0
+max_value = 1.0
+step = 0.0
+
+[node name="Label" type="Label" parent="Back Lights/Hue"]
+layout_mode = 0
+offset_left = -31.0
+offset_top = 135.0
+offset_right = 122.0
+offset_bottom = 164.0
+rotation = -1.5707964
+text = "Ambient Hue"
