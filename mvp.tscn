@@ -23,6 +23,9 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 165.0
 offset_bottom = 51.0
+max_value = 1.0
+step = 0.01
+value = 1.0
 
 [node name="Brightness" type="VSlider" parent="Main Light Slides/Sliders"]
 layout_mode = 0
@@ -30,9 +33,10 @@ offset_left = -70.0
 offset_top = -128.0
 offset_right = 24.0
 offset_bottom = 49.0
-max_value = 3.0
+min_value = 0.3
+max_value = 2.0
 step = 0.1
-page = 1.0
+value = 1.0
 
 [node name="Position" type="HSlider" parent="Main Light Slides/Sliders"]
 layout_mode = 0
@@ -49,10 +53,9 @@ offset_left = -2.0
 offset_top = -80.0
 offset_right = 164.0
 offset_bottom = -64.0
-max_value = 2.0
-step = 0.1
+max_value = 4.0
+step = 0.0
 value = 1.0
-exp_edit = true
 
 [node name="Rotation" type="HSlider" parent="Main Light Slides/Sliders"]
 layout_mode = 0
@@ -118,10 +121,12 @@ scale = Vector2(0.24830508, 0.36223537)
 texture = ExtResource("3_w5aql")
 
 [node name="PointLight2D" type="PointLight2D" parent="Main Light Slides/Stagelight/Light"]
+color = Color(18.892157, 18.892157, 18.892157, 1)
 energy = 8.87
 texture = ExtResource("3_w5aql")
 
 [node name="PointLight2D2" type="PointLight2D" parent="Main Light Slides/Stagelight/Light"]
+visible = false
 energy = 8.87
 texture = ExtResource("3_w5aql")
 
@@ -131,6 +136,7 @@ occluder = SubResource("OccluderPolygon2D_w5aql")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(573, 328)
+zoom = Vector2(1, 0.75)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 light_mask = 2
